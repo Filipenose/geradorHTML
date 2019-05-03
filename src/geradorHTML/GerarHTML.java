@@ -3,7 +3,7 @@ package geradorHTML;
 public class GerarHTML {
 	
 	public static void main( String[] args ) throws Exception {
-		String[] cabecalho = { "Name", "Telefone", "Endereço" };
+		String[] cabecalho = { "nome", "Telefone", "Endereço" };
 		String[][] dados = { 
 							{ "Msrcus", "71986874997", "Rua D Chapeu" }, 
 							{ "Thiago","7199889832", "Pituba"}, 
