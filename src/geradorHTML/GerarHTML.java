@@ -1,9 +1,14 @@
 package geradorHTML;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class GerarHTML {
 	
+	
+	
 	public static void main( String[] args ) throws Exception {
-		String[] cabecalho = { "nome", "Telefone", "Endereço" };
+		String[] cabecalho = { "nome", "Telefone", "Endereco" };
 		String[][] dados = { 
 							{ "Msrcus", "71986874997", "Rua D Chapeu" }, 
 							{ "Thiago","7199889832", "Pituba"}, 
@@ -54,14 +59,14 @@ public class GerarHTML {
 	}
 	
 	public static String getLogoEstaticoHTML(String urlHref, String urlImagem) {
-		String enderecoWEBBrisa = "http://www.brisa.org.br";
-		String enderecoWEBLogoBrisa = enderecoWEBBrisa.concat("/images/layout/logo_brisa.png");
+		String enderecoWEBTeste = "https://www.w3schools.com";
+		String enderecoWEBLogoTeste = ("https://bit.ly/2IW7zGR");
 		StringBuilder html = new StringBuilder();
 				html.append( "<div align='center' class='gwd-div-1hvb'>" );
 				html.append( "<header>" );
-				html.append( "<a href="+ enderecoWEBBrisa + ">" );
+				html.append( "<a href="+ enderecoWEBTeste + ">" );
 				html.append( "<div>" );
-				html.append( "<img align='center' border='0' src=" + enderecoWEBLogoBrisa );
+				html.append( "<img align='center' border='0' src=" + enderecoWEBLogoTeste );
 				html.append( " class='gwd-img-183s' ");
 				html.append( "width='196' heigth='70' alt='logo brisa' ");
 				html.append( "style='margin: 0px; border: 0px; none rgb(0, 0, 0); float:center;'>" );
@@ -77,9 +82,11 @@ public class GerarHTML {
 	}
 	
 	public static void gerarHTML(String titulo, String descricaoTabela, String[] cabecalho, String[][] dados) throws Exception {
-
+		
 		try {
-			
+
+			FileWriter arq =  new FileWriter("f:\\teste5.html");
+			PrintWriter gravarArq =  new PrintWriter(arq);
 			StringBuilder html = new StringBuilder();
 			
 			if ( cabecalho != null && dados != null ) {
@@ -89,11 +96,11 @@ public class GerarHTML {
 				html.append("<head>");
 				html.append("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\">");
 				html.append("<meta charset='utf-8'>");
-				html.append("<title>BRISA</title>");
+				html.append("<title>Gerador de HTML</title>");
 				html.append("<meta name='generator' content='Google Web Designer 5.0.4.0226'>");
 				html.append("</head>");
 				html.append("<body class htmlNoPages>");
-				html.append( getLogoEstaticoHTML("http://www.brisa.org.br", "/images/layout/logo_brisa.png" ));
+				html.append( getLogoEstaticoHTML("https://www.w3schools.com", "https://bit.ly/2IW7zGR" ));
 				html.append("<div class='container'>");
 				html.append("<h2>" + titulo + "</h2><br>");
 				html.append("<p>" + descricaoTabela + "<p><br>");
@@ -105,17 +112,20 @@ public class GerarHTML {
 				html.append("</table>");
 				html.append("</div>");
 				html.append("</body>");
-				html.append( getFooterHTML( "Copyright © 2013 BRISA. Todos os direitos reservados." ) );
-				html.append("</html>");
+				html.append( getFooterHTML( "Copyright @ 2013. Todos os direitos reservados." ) );
+				gravarArq.print(html.append("</html>"));
+
 				System.out.println( html.toString() );
+				
+				gravarArq.close();
+				
 			}else {
-				throw new Exception("O array e a matriz estão vazios. ");
+				throw new Exception("O array e a matriz estï¿½o vazios. ");
 			}
 			
-		} catch (Exception e) {
+		} catch (Exception e) {			
 			throw new Exception( "Erro ao gerar o HTML. " + e.getMessage() );
 		}
 
 	}
-
 }
