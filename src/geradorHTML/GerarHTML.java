@@ -10,10 +10,10 @@ public class GerarHTML {
 	public static void main( String[] args ) throws Exception {
 		String[] cabecalho = { "nome", "Telefone", "Endereco" };
 		String[][] dados = { 
-							{ "Msrcus", "71986874997", "Rua D Chapeu" }, 
-							{ "Thiago","7199889832", "Pituba"}, 
-							{ "Filipe", "232424", "Castelo Branco" } };
-		gerarHTML( "Checklist", "Projeto 8890", cabecalho, dados);
+							{ "ET", "01234564", "Rua Das Casas" }, 
+							{ "Rodolpho","02345789", "Rua Dos Prédios"}, 
+							{ "Detonator", "32568745", "Rua Dos Barracos" } };
+		gerarHTML( "Infomação", "Infomação 0000", cabecalho, dados);
 	}
 
 	public static String getCabecalhoHTML( String[] cabecalho ) {
